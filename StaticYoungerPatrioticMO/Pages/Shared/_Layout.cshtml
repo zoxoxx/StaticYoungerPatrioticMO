@@ -8,11 +8,10 @@
     <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <!-- ===== БИБЛИОТЕКА SVG-СИМВОЛОВ (знак «Искры», иконки) ===== -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
         <defs>
             <linearGradient id="gradFlame" x1="0" y1="0" x2="0" y2="1">
@@ -40,41 +39,65 @@
                 <stop offset="0" stop-color="#1b3a63" />
                 <stop offset="1" stop-color="#0b1f3a" />
             </linearGradient>
+            <radialGradient id="gradGlow" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#f7c948" stop-opacity=".5" />
+                <stop offset="1" stop-color="#f7c948" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="gradRing" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e8a020" />
+                <stop offset=".5" stop-color="#ffe9a8" />
+                <stop offset="1" stop-color="#e8a020" />
+            </linearGradient>
+            <linearGradient id="gradPages" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fdf6e3" />
+                <stop offset="1" stop-color="#e9cf9a" />
+            </linearGradient>
+            <path id="laur-leaf" d="M0 0 C8 -8 10 -22 0 -34 C-10 -22 -8 -8 0 0 Z" />
+            <path id="ribbon-path" d="M196 50 C212 76 206 100 192 120 C180 138 176 160 186 184" fill="none" />
         </defs>
 
-        <!-- ЗНАК «ИСКРА»: пламя со звездой, лавровые ветви, книга, силуэты -->
+        <!-- НОВЫЙ ЗНАК ИСКРЫ (буклетный) -->
         <symbol id="spark-emblem" viewBox="0 0 240 260">
-            <path d="M52 118 A68 68 0 0 1 188 118" fill="none" stroke="#f7c948" stroke-width="3" opacity=".75" />
-            <g stroke="url(#gradLaurel)" stroke-width="6" fill="none" stroke-linecap="round">
-                <path d="M120 236 C70 224 44 178 48 118" />
-                <path d="M120 236 C170 224 196 178 192 118" />
+            <!-- свечение и кольцо -->
+            <circle cx="120" cy="110" r="64" fill="url(#gradGlow)" />
+            <circle cx="120" cy="112" r="74" fill="none" stroke="url(#gradRing)" stroke-width="2.5" opacity=".85" />
+
+            <!-- ЛЕНТА: цельное полотнище (перекрытие полос 1px) -->
+            <g fill="none" stroke-linecap="butt">
+                <path d="M177.3 50.6 A84 84 0 0 1 180.8 170" stroke="#ffffff" stroke-width="6" />
+                <path d="M181.4 46.2 A89 89 0 0 1 188.9 170" stroke="#0039a6" stroke-width="6" />
+                <path d="M185.5 41.8 A94 94 0 0 1 196.5 170" stroke="#d52b1e" stroke-width="6" />
             </g>
-            <g fill="url(#gradLaurel)">
-                <ellipse cx="60" cy="208" rx="15" ry="6" transform="rotate(-35 60 208)" />
-                <ellipse cx="50" cy="186" rx="15" ry="6" transform="rotate(-55 50 186)" />
-                <ellipse cx="45" cy="162" rx="15" ry="6" transform="rotate(-75 45 162)" />
-                <ellipse cx="44" cy="138" rx="15" ry="6" transform="rotate(-90 44 138)" />
-                <ellipse cx="46" cy="114" rx="15" ry="6" transform="rotate(-105 46 114)" />
-                <ellipse cx="52" cy="92" rx="14" ry="6" transform="rotate(-120 52 92)" />
-                <ellipse cx="180" cy="208" rx="15" ry="6" transform="rotate(35 180 208)" />
-                <ellipse cx="190" cy="186" rx="15" ry="6" transform="rotate(55 190 186)" />
-                <ellipse cx="195" cy="162" rx="15" ry="6" transform="rotate(75 195 162)" />
-                <ellipse cx="196" cy="138" rx="15" ry="6" transform="rotate(90 196 138)" />
-                <ellipse cx="194" cy="114" rx="15" ry="6" transform="rotate(105 194 114)" />
-                <ellipse cx="188" cy="92" rx="14" ry="6" transform="rotate(120 188 92)" />
+
+            <!-- ЛАВР: сдвинут влево на 7px -->
+            <g transform="translate(-7 0)">
+                <path d="M72 169 A74 74 0 0 1 65 62" fill="none" stroke="url(#gradLaurel)" stroke-width="4.5" stroke-linecap="round" />
+                <g fill="url(#gradLaurel)">
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(72 169) rotate(-83) scale(.9)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(63 160) rotate(-73)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(55 147) rotate(-61)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(49 132) rotate(-49)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(46 117) rotate(-37)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(47 102) rotate(-25)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(50 87) rotate(-13)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(57 73) rotate(-2)" />
+                    <path d="M0 0 C4 -6 5 -15 0 -24 C-5 -15 -4 -6 0 0 Z" transform="translate(65 62) rotate(9) scale(.85)" />
+                </g>
             </g>
-            <circle cx="120" cy="125" r="30" fill="#ffffff" opacity=".18" />
-            <path class="flame" d="M120 26 C150 62 168 92 168 124 C168 158 146 180 120 180 C94 180 72 158 72 124 C72 92 90 62 120 26 Z" fill="url(#gradFlame)" />
-            <path class="flame-in" d="M120 62 C138 86 150 106 150 128 C150 150 136 164 120 164 C104 164 90 150 90 128 C90 106 102 86 120 62 Z" fill="url(#gradFlameInner)" opacity=".92" />
-            <path class="star" d="M120 78 L128 117 L158 125 L128 133 L120 172 L112 133 L82 125 L112 117 Z" fill="url(#gradStar)" />
-            <g fill="url(#gradSil)">
-                <circle cx="103" cy="180" r="11" />
-                <path d="M88 214 c0-12 7-19 15-19 c8 0 15 7 15 19 z" />
-                <circle cx="137" cy="180" r="11" />
-                <path d="M122 214 c0-12 7-19 15-19 c8 0 15 7 15 19 z" />
-            </g>
-            <path d="M78 214 C96 204 112 204 120 212 C128 204 144 204 162 214 L162 236 C144 226 128 226 120 234 C112 226 96 226 78 236 Z" fill="url(#gradBook)" />
-            <path d="M120 212 L120 234" stroke="#f7c948" stroke-width="2" opacity=".8" />
+
+            <!-- пламя: вырастает из книги -->
+            <path class="flame" d="M120 14 C140 44 162 74 162 108 C162 146 144 194 120 194 C96 194 78 146 78 108 C78 74 100 44 120 14 Z" fill="url(#gradFlame)" />
+            <path class="flame-in" d="M120 52 C134 74 148 96 148 118 C148 144 135 182 120 182 C105 182 92 144 92 118 C92 96 106 74 120 52 Z" fill="url(#gradFlameInner)" opacity=".92" />
+
+            <!-- искра с вогнутыми гранями -->
+            <circle cx="120" cy="112" r="22" fill="#ffffff" opacity=".25" />
+            <path class="star" d="M120 62 Q127 109 162 116 Q127 123 120 164 Q113 123 78 116 Q113 109 120 62 Z" fill="url(#gradStar)" />
+
+            <!-- раскрытая книга -->
+            <path d="M64 208 C88 196 112 196 120 204 C128 196 152 196 176 208 L172 234 C150 224 130 224 120 230 C110 224 90 224 68 234 Z" fill="url(#gradBook)" />
+            <path d="M70 206 C92 195 112 195 120 202 C128 195 148 195 170 206 L166 222 C146 213 130 213 120 219 C110 213 94 213 74 222 Z" fill="url(#gradPages)" />
+            <path d="M70 206 C92 195 112 195 120 202 C128 195 148 195 170 206" fill="none" stroke="#c97a10" stroke-width="1.4" opacity=".8" />
+            <path d="M120 202 L120 230" stroke="#0b1f3a" stroke-width="2" opacity=".55" />
         </symbol>
 
         <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2.5l2 7 7 2.5-7 2.5-2 7-2-7-7-2.5 7-2.5z" fill="currentColor" /></symbol>
@@ -93,7 +116,6 @@
         <symbol id="icon-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5" /></symbol>
     </svg>
 
-    <!-- Фоновые «ленты» в стиле буклета -->
     <div class="bg-waves" aria-hidden="true">
         <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
             <path class="wave-b" d="M-100 780 C260 660 560 860 900 720 C1180 605 1340 660 1540 540 L1540 940 L-100 940 Z" fill="#b9c2e6" opacity=".55" />
