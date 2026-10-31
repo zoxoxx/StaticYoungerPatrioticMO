@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ИСКРА — программа патриотического воспитания | Санкт-Петербург</title>
+    <meta name="description" content="ИСКРА — программа нравственного, патриотического и духовного воспитания современной молодёжи. Санкт-Петербург, Калининский район. Участие бесплатное." />
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- ===== БИБЛИОТЕКА SVG-СИМВОЛОВ (знак «Искры», иконки) ===== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="gradFlame" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffe9a8" />
+                <stop offset=".45" stop-color="#f7c948" />
+                <stop offset="1" stop-color="#e2762d" />
+            </linearGradient>
+            <linearGradient id="gradFlameInner" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fff7d6" />
+                <stop offset="1" stop-color="#ffd766" />
+            </linearGradient>
+            <linearGradient id="gradStar" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset="1" stop-color="#fff3c4" />
+            </linearGradient>
+            <linearGradient id="gradBook" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#123a6b" />
+                <stop offset="1" stop-color="#0b1f3a" />
+            </linearGradient>
+            <linearGradient id="gradLaurel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#57a86b" />
+                <stop offset="1" stop-color="#2e7d4f" />
+            </linearGradient>
+            <linearGradient id="gradSil" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1b3a63" />
+                <stop offset="1" stop-color="#0b1f3a" />
+            </linearGradient>
+        </defs>
+
+        <!-- ЗНАК «ИСКРА»: пламя со звездой, лавровые ветви, книга, силуэты -->
+        <symbol id="spark-emblem" viewBox="0 0 240 260">
+            <path d="M52 118 A68 68 0 0 1 188 118" fill="none" stroke="#f7c948" stroke-width="3" opacity=".75" />
+            <g stroke="url(#gradLaurel)" stroke-width="6" fill="none" stroke-linecap="round">
+                <path d="M120 236 C70 224 44 178 48 118" />
+                <path d="M120 236 C170 224 196 178 192 118" />
+            </g>
+            <g fill="url(#gradLaurel)">
+                <ellipse cx="60" cy="208" rx="15" ry="6" transform="rotate(-35 60 208)" />
+                <ellipse cx="50" cy="186" rx="15" ry="6" transform="rotate(-55 50 186)" />
+                <ellipse cx="45" cy="162" rx="15" ry="6" transform="rotate(-75 45 162)" />
+                <ellipse cx="44" cy="138" rx="15" ry="6" transform="rotate(-90 44 138)" />
+                <ellipse cx="46" cy="114" rx="15" ry="6" transform="rotate(-105 46 114)" />
+                <ellipse cx="52" cy="92" rx="14" ry="6" transform="rotate(-120 52 92)" />
+                <ellipse cx="180" cy="208" rx="15" ry="6" transform="rotate(35 180 208)" />
+                <ellipse cx="190" cy="186" rx="15" ry="6" transform="rotate(55 190 186)" />
+                <ellipse cx="195" cy="162" rx="15" ry="6" transform="rotate(75 195 162)" />
+                <ellipse cx="196" cy="138" rx="15" ry="6" transform="rotate(90 196 138)" />
+                <ellipse cx="194" cy="114" rx="15" ry="6" transform="rotate(105 194 114)" />
+                <ellipse cx="188" cy="92" rx="14" ry="6" transform="rotate(120 188 92)" />
+            </g>
+            <circle cx="120" cy="125" r="30" fill="#ffffff" opacity=".18" />
+            <path class="flame" d="M120 26 C150 62 168 92 168 124 C168 158 146 180 120 180 C94 180 72 158 72 124 C72 92 90 62 120 26 Z" fill="url(#gradFlame)" />
+            <path class="flame-in" d="M120 62 C138 86 150 106 150 128 C150 150 136 164 120 164 C104 164 90 150 90 128 C90 106 102 86 120 62 Z" fill="url(#gradFlameInner)" opacity=".92" />
+            <path class="star" d="M120 78 L128 117 L158 125 L128 133 L120 172 L112 133 L82 125 L112 117 Z" fill="url(#gradStar)" />
+            <g fill="url(#gradSil)">
+                <circle cx="103" cy="180" r="11" />
+                <path d="M88 214 c0-12 7-19 15-19 c8 0 15 7 15 19 z" />
+                <circle cx="137" cy="180" r="11" />
+                <path d="M122 214 c0-12 7-19 15-19 c8 0 15 7 15 19 z" />
+            </g>
+            <path d="M78 214 C96 204 112 204 120 212 C128 204 144 204 162 214 L162 236 C144 226 128 226 120 234 C112 226 96 226 78 236 Z" fill="url(#gradBook)" />
+            <path d="M120 212 L120 234" stroke="#f7c948" stroke-width="2" opacity=".8" />
+        </symbol>
+
+        <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2.5l2 7 7 2.5-7 2.5-2 7-2-7-7-2.5 7-2.5z" fill="currentColor" /></symbol>
+        <symbol id="icon-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="4.5" /><path d="M8.5 10 6 3.5M15.5 10 18 3.5M10 3.5 12 9l2-5.5" /></symbol>
+        <symbol id="icon-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.5c-4.7 0-8.5 3.6-8.5 8.2 0 4.6 3.8 8.3 8.5 8.3 1.9 0 3-1 3-2.4 0-1.3-1-1.6-1-2.6 0-.9.8-1.5 1.9-1.5h1.6c1.7 0 3-1.3 3-3 0-3.9-3.8-7-8.5-7z" /><circle cx="8.2" cy="10" r="1" fill="currentColor" stroke="none" /><circle cx="12" cy="7.6" r="1" fill="currentColor" stroke="none" /><circle cx="15.8" cy="10" r="1" fill="currentColor" stroke="none" /></symbol>
+        <symbol id="icon-museum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9.5 12 4l8.5 5.5" /><path d="M5.5 10v7M9.8 10v7M14.2 10v7M18.5 10v7" /><path d="M3.5 19.5h17" /></symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l7.5 3v6.2c0 4.6-3.2 7.6-7.5 9.3-4.3-1.7-7.5-4.7-7.5-9.3V6z" /><path d="M12 8.6l1 2.1 2.3.3-1.65 1.6.4 2.3-2.05-1.1-2.05 1.1.4-2.3-1.65-1.6 2.3-.3z" fill="currentColor" stroke="none" opacity=".9" /></symbol>
+        <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.6l2.5 5.1 5.6.8-4 3.9.95 5.6-5.05-2.65-5.05 2.65.95-5.6-4-3.9 5.6-.8z" /></symbol>
+        <symbol id="icon-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h6.5L18 8v12.5H7z" /><path d="M13.5 3.5V8H18M9.5 12h5M9.5 15.5h5" /></symbol>
+        <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21.5s-6.5-5.6-6.5-10.3a6.5 6.5 0 0 1 13 0c0 4.7-6.5 10.3-6.5 10.3z" /><circle cx="12" cy="11" r="2.4" /></symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z" /></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2" /><path d="M4 7l8 6 8-6" /></symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></symbol>
+        <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 6.5C10 4.8 7 4.6 4 5.6v13c3-1 6-.8 8 .9 2-1.7 5-1.9 8-.9v-13c-3-1-6-.8-8 .9z" /><path d="M12 6.5v13" /></symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></symbol>
+        <symbol id="icon-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5" /></symbol>
+    </svg>
+
+    <!-- Фоновые «ленты» в стиле буклета -->
+    <div class="bg-waves" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+            <path class="wave-b" d="M-100 780 C260 660 560 860 900 720 C1180 605 1340 660 1540 540 L1540 940 L-100 940 Z" fill="#b9c2e6" opacity=".55" />
+            <path class="wave-a" d="M-100 700 C300 560 520 760 860 620 C1140 505 1300 560 1540 420 L1540 940 L-100 940 Z" fill="#f3c6b3" opacity=".6" />
+        </svg>
+    </div>
+
+    <header class="nav" id="nav">
+        <div class="container nav-inner">
+            <a class="nav-logo" href="#hero" aria-label="ИСКРА — на главную">
+                <svg class="nav-logo-icon" aria-hidden="true"><use href="#icon-spark" /></svg>
+                <span>ИСКРА</span>
+            </a>
+            <nav class="nav-menu" id="navMenu" aria-label="Разделы сайта">
+                <a class="nav-link" href="#about">О программе</a>
+                <a class="nav-link" href="#tasks">Задания</a>
+                <a class="nav-link" href="#ranks">Ранги</a>
+                <a class="nav-link" href="#support">Поддержка</a>
+                <a class="nav-link" href="#join">Участие</a>
+                <a class="nav-link" href="#contacts">Контакты</a>
+            </nav>
+            <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="footer-flag" aria-hidden="true"></div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <svg class="footer-emblem" aria-hidden="true"><use href="#spark-emblem" /></svg>
+                <div>
+                    <p class="footer-title">ИСКРА</p>
+                    <p class="footer-note">Программа нравственного, патриотического и духовного воспитания современной молодёжи</p>
+                </div>
+            </div>
+            <nav class="footer-nav" aria-label="Навигация в подвале">
+                <a href="#about">О программе</a>
+                <a href="#tasks">Виды заданий</a>
+                <a href="#ranks">Система рангов</a>
+                <a href="#support">Поддержка и партнёры</a>
+                <a href="#join">Как участвовать</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <div class="footer-meta">
+                <p>Санкт-Петербург</p>
+                <p>2026 г.</p>
+                <p class="footer-copy">© @DateTime.Now.Year Программа «ИСКРА». Участие бесплатное.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="to-top" id="toTop" aria-label="Наверх">
+        <svg aria-hidden="true"><use href="#icon-up" /></svg>
+    </button>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
