@@ -10,14 +10,12 @@
         <div class="hero-emblem" aria-hidden="true">
             <svg viewBox="0 0 240 260"><use href="#spark-emblem" /></svg>
         </div>
-        <span class="hero-kicker">Санкт-Петербург • Калининский район</span>
         <h1 class="hero-title">ИСКРА</h1>
         <div class="hero-divider" aria-hidden="true">
             <span></span><svg viewBox="0 0 24 24"><use href="#icon-spark" /></svg><span></span>
         </div>
         <p class="hero-sub">Программа нравственного, патриотического и&nbsp;духовного воспитания современной молодёжи</p>
         <div class="hero-actions">
-            <a class="btn btn-gold" href="#join">Стать участником</a>
             <a class="btn btn-ghost" href="#about">О программе</a>
         </div>
         <div class="hero-badges">
@@ -32,20 +30,16 @@
 <section class="stats" id="stats" data-animate>
     <div class="container stats-grid">
         <div class="stat reveal">
-            <p class="stat-num"><span data-count="@Model.Info.Quota">0</span></p>
-            <p class="stat-label">мест выделено на @Model.Info.QuotaYear учебный год</p>
-        </div>
-        <div class="stat reveal" style="@Model.StatsDelay1">
             <p class="stat-num">@Model.Info.AgeMin–@Model.Info.AgeMax</p>
             <p class="stat-label">возраст участников программы</p>
         </div>
-        <div class="stat reveal" style="@Model.StatsDelay2">
+        <div class="stat reveal" style="@Model.StatsDelay1">
             <p class="stat-num"><span data-count="@Model.Ranks.Count">0</span></p>
             <p class="stat-label">рангов в системе «искровцев»</p>
         </div>
-        <div class="stat reveal" style="@Model.StatsDelay3">
-            <p class="stat-num">0 ₽</p>
-            <p class="stat-label">стоимость участия — бесплатно</p>
+        <div class="stat reveal" style="@Model.StatsDelay2">
+            <p class="stat-num">Бесплатно</p>
+            <p class="stat-label">стоимость участия</p>
         </div>
     </div>
 </section>
@@ -56,11 +50,43 @@
         <header class="section-head">
             <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
             <div>
-                <h2 class="section-title">Цели программы</h2>
-                <p class="section-lead">«Искра» зажигает в подростках главное — характер, доброту и любовь к Родине.</p>
+                <h2 class="section-title">О программе</h2>
             </div>
         </header>
 
+        <blockquote class="epigraph reveal">
+            @Model.Quote
+            <cite>@Model.QuoteAuthor</cite>
+        </blockquote>
+
+        <p class="about-intro reveal">@Model.AboutIntro</p>
+
+        <div class="num-cards">
+            @for (int i = 0; i < Model.AboutBlocks.Count; i++)
+            {
+                var b = Model.AboutBlocks[i];
+                var d = i * 110;
+                <article class="card num-card reveal" style="--d:@(d)ms">
+                    <span class="num">@(i + 1)</span>
+                    <h3 class="card-title">@b.Title</h3>
+                    @foreach (var p in b.Paragraphs)
+                    {
+                        <p>@p</p>
+                    }
+                    @if (b.Bullets.Count > 0)
+                    {
+                        <ul class="list-mark">
+                            @foreach (var li in b.Bullets)
+                            {
+                                <li>@li</li>
+                            }
+                        </ul>
+                    }
+                </article>
+            }
+        </div>
+
+        <h3 class="sub-title reveal">Цели программы</h3>
         <div class="about-grid">
             <article class="card reveal">
                 <h3 class="card-title"><svg class="ci" aria-hidden="true"><use href="#icon-star" /></svg> Зачем мы это делаем</h3>
@@ -101,7 +127,7 @@
             <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
             <div>
                 <h2 class="section-title">Виды заданий</h2>
-                <p class="section-lead">Задания в дневнике «искровца» чередуются: тело ремесло и дух получают равное внимание.</p>
+                <p class="section-lead">Задания в дневнике «искровца» чередуются: тело, ремесло и дух получают равное внимание.</p>
             </div>
         </header>
 
@@ -131,7 +157,7 @@
             <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
             <div>
                 <h2 class="section-title">Система рангов «искровцев»</h2>
-                <p class="section-lead">Путь от новобранца до пионера — год за годом, норматив за нормативом.</p>
+                <p class="section-lead">Путь от новобранца до пионера: возраст, нормативы, испытания.</p>
             </div>
         </header>
 
@@ -155,9 +181,66 @@
                         }
                     </div>
                     <p class="rank-name">@rank.Name</p>
-                    <span class="rank-years">@rank.Years</span>
+                    <span class="rank-years">@rank.Age</span>
                     <p class="rank-desc">@rank.Description</p>
                 </div>
+            }
+        </div>
+
+        <div class="norms">
+            @foreach (var rank in Model.Ranks)
+            {
+                <details class="norm-card reveal" data-group="norms">
+                    <summary><span class="norm-title">Нормативы: @rank.Name</span><span class="rank-years">@rank.Age</span></summary>
+                    <div class="norm-body">
+                        @if (rank.Norms.Physical.Count > 0)
+                        {
+                            <p class="norm-label">Физические нормативы</p>
+                            <table class="norm-table">
+                                <tbody>
+                                    @foreach (var row in rank.Norms.Physical)
+                                    {
+                                        <tr><td>@row.Exercise</td><td>@row.Value</td></tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        @if (rank.Norms.Group.Count > 0)
+                        {
+                            <p class="norm-label">Посещение в составе организованной группы</p>
+                            <ul class="list-mark">
+                                @foreach (var g in rank.Norms.Group)
+                                {
+                                    <li>@g</li>
+                                }
+                            </ul>
+                        }
+                        @if (rank.Norms.Individual.Count > 0)
+                        {
+                            <p class="norm-label">Индивидуальные задания</p>
+                            <ul class="list-mark">
+                                @foreach (var g in rank.Norms.Individual)
+                                {
+                                    <li>@g</li>
+                                }
+                            </ul>
+                        }
+                        @if (rank.Norms.Extra.Count > 0)
+                        {
+                            <p class="norm-label">Дополнительные испытания</p>
+                            <ul class="list-mark">
+                                @foreach (var g in rank.Norms.Extra)
+                                {
+                                    <li>@g</li>
+                                }
+                            </ul>
+                        }
+                        @if (!string.IsNullOrEmpty(rank.Norms.Reward))
+                        {
+                            <p class="norm-reward">@rank.Norms.Reward</p>
+                        }
+                    </div>
+                </details>
             }
         </div>
 
@@ -173,9 +256,9 @@
                 <p class="card-note">Допуск к получению очередного звания даёт командир Народной Дружины «Калининская».</p>
             </article>
             <article class="card card-accent reveal" style="@Model.RulesAccentDelay">
-                <h3 class="card-title"><svg class="ci" aria-hidden="true"><use href="#icon-shield" /></svg> Особые нормативы</h3>
-                <p>Сдача нормативов на звания <strong>Инженер</strong> и <strong>Пионер</strong> проходит под контролем 33-й отдельной бригады оперативного назначения.</p>
-                <p>После сдачи нормативов участник получает <strong>индивидуальную форму со знаками отличия</strong>.</p>
+                <h3 class="card-title"><svg class="ci" aria-hidden="true"><use href="#icon-shield" /></svg> Где сдаются нормативы</h3>
+                <p>Сдача нормативов проходит на базе <strong>ЦФКиС Калининского района СПб</strong> и <strong>33-й Ордена Жукова бригады оперативного назначения СЗФО Росгвардии</strong>.</p>
+                <p>После сдачи нормативов «Искровец» получает <strong>знаки отличия на форму</strong>, а <strong>Инжинер</strong> и <strong>Пионер</strong> получают <strong>индивидуальную форму</strong>.</p>
             </article>
         </div>
     </div>
@@ -188,7 +271,7 @@
             <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
             <div>
                 <h2 class="section-title">Нас поддерживают</h2>
-                <p class="section-lead">Программа сильна опорой государства, армии, транспорта и спорта.</p>
+                <p class="section-lead">Нажмите «Подробнее», чтобы посмотреть фотографии и описание.</p>
             </div>
         </header>
 
@@ -196,8 +279,11 @@
             @foreach (var s in Model.Supporters)
             {
                 <article class="card support-card reveal">
-                    <svg class="support-icon" aria-hidden="true"><use href="#icon-shield" /></svg>
-                    <p>@s.Name</p>
+                    <div class="support-head">
+                        <svg class="support-icon" aria-hidden="true"><use href="#icon-shield" /></svg>
+                        <span class="name">@s.Name</span>
+                        <button type="button" class="more" data-name="@s.Name" data-desc="@Model.PartnerDescription">Подробнее</button>
+                    </div>
                 </article>
             }
         </div>
@@ -206,9 +292,12 @@
         <div class="grid-auto">
             @foreach (var p in Model.Partners)
             {
-                <article class="card partner-card reveal">
-                    <svg class="partner-icon" aria-hidden="true"><use href="#icon-star" /></svg>
-                    <p>@p.Name</p>
+                <article class="card support-card reveal">
+                    <div class="support-head">
+                        <svg class="support-icon" aria-hidden="true"><use href="#icon-star" /></svg>
+                        <span class="name">@p.Name</span>
+                        <button type="button" class="more" data-name="@p.Name" data-desc="@Model.PartnerDescription">Подробнее</button>
+                    </div>
                 </article>
             }
         </div>
@@ -246,79 +335,71 @@
                 </article>
             }
         </div>
-
-        <div class="quota-banner reveal">
-            <div class="quota-left">
-                <p class="quota-num"><span data-count="@Model.Info.Quota">0</span></p>
-                <p class="quota-text">мест выделено на&nbsp;@Model.Info.QuotaYear учебный год</p>
-            </div>
-            <div class="quota-right">
-                <p>Успейте занять своё место в строю — заявки принимаются уже сейчас.</p>
-                <a class="btn btn-gold" href="#contacts">Узнать о свободных местах</a>
-            </div>
-        </div>
     </div>
 </section>
 
-<section class="section section-tint" id="contacts" data-animate>
+<section class="section section-tint" id="social" data-animate>
     <svg class="watermark" aria-hidden="true"><use href="#spark-emblem" /></svg>
     <div class="container">
         <header class="section-head">
             <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
             <div>
-                <h2 class="section-title">Контакты</h2>
-                <p class="section-lead">Приходите знакомиться — расскажем, покажем и запишем в отряд.</p>
+                <h2 class="section-title">Мы в социальных сетях</h2>
+                <p class="section-lead">Подписывайтесь: отчёты с мероприятий, фото и анонсы — там.</p>
             </div>
         </header>
 
-        <div class="contacts-grid">
-            <div class="contact-list">
-                <div class="contact-row reveal">
-                    <svg class="contact-icon" aria-hidden="true"><use href="#icon-pin" /></svg>
-                    <div>
-                        <p class="contact-label">Основной адрес приёма</p>
-                        <p class="contact-value">Санкт-Петербург, ул. Михайлова, дом 9</p>
-                    </div>
-                </div>
-                <div class="contact-row reveal" style="@Model.ContactMailDelay">
-                    <svg class="contact-icon" aria-hidden="true"><use href="#icon-mail" /></svg>
-                    <div>
-                        <p class="contact-label">Электронная почта</p>
-                        <p class="contact-value"><a href="mailto:@Model.ContactEmail">@Model.ContactEmail</a></p>
-                    </div>
-                </div>
-                <div class="contact-row reveal" style="@Model.ContactPhoneDelay">
-                    <svg class="contact-icon" aria-hidden="true"><use href="#icon-phone" /></svg>
-                    <div>
-                        <p class="contact-label">Телефон</p>
-                        <p class="contact-value"><a href="tel:@Model.CleanPhone">@Model.ContactPhone</a></p>
-                    </div>
-                </div>
-                <div class="contact-row reveal" style="@Model.ContactHoursDelay">
-                    <svg class="contact-icon" aria-hidden="true"><use href="#icon-clock" /></svg>
-                    <div>
-                        <p class="contact-label">Часы работы</p>
-                        <p class="contact-value">@Model.ContactHours</p>
-                    </div>
-                </div>
-                <div class="contact-row reveal" style="@Model.ContactOtherDelay">
-                    <svg class="contact-icon" aria-hidden="true"><use href="#icon-doc" /></svg>
-                    <div>
-                        <p class="contact-label">Дополнительные площадки</p>
-                        <p class="contact-value">Арсенальная наб., 13/1 • ул. Карпинского, 27 к.2</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photos">
-                @foreach (var ph in Model.Photos)
-                {
-                    <figure class="photo-frame reveal">
-                        <img src="@ph.Src" alt="@ph.Caption" loading="lazy" />
-                        <figcaption>@ph.Caption</figcaption>
-                    </figure>
-                }
-            </div>
+        <div class="social-grid">
+            @foreach (var sl in Model.Socials)
+            {
+                <a class="social-card social-@sl.Id reveal" href="@sl.Url" target="_blank" rel="noopener">
+                    @sl.Name
+                    <small>@sl.Hint</small>
+                </a>
+            }
         </div>
     </div>
 </section>
+
+<section class="section" id="trustees" data-animate>
+    <svg class="watermark" aria-hidden="true"><use href="#spark-emblem" /></svg>
+    <div class="container">
+        <header class="section-head">
+            <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
+            <div>
+                <h2 class="section-title">Попечительский совет программы «ИСКРА»</h2>
+                <p class="section-lead">Люди, которые поддерживают программу делом и словом.</p>
+            </div>
+        </header>
+
+        <div class="trustees-grid">
+            @foreach (var t in Model.Trustees)
+            {
+                <article class="card trustee-card reveal">
+                    <img class="trustee-photo" src="@t.Photo" alt="@t.Name" loading="lazy" />
+                    <p class="trustee-name">@t.Name</p>
+                    <p class="trustee-role">@t.Role</p>
+                    <details>
+                        <summary>Подробнее</summary>
+                        <p class="trustee-details">@t.Details</p>
+                    </details>
+                </article>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Общая модалка «Подробнее» (вне карточек, поэтому fixed работает от экрана) -->
+<div class="support-modal-backdrop" id="supportModal" hidden>
+    <div class="support-modal">
+        <button type="button" class="support-close" aria-label="Закрыть">×</button>
+        <h4 class="modal-title" id="supportModalTitle"></h4>
+        <div class="photos-mini">
+            @foreach (var src in Model.PartnerPhotos)
+            {
+                <img src="@src" alt="" loading="lazy" />
+            }
+        </div>
+        <p class="support-desc" id="supportModalDesc"></p>
+    </div>
+</div>

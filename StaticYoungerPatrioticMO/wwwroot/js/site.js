@@ -64,8 +64,8 @@
     const appear = new IntersectionObserver(entries => {
         entries.forEach(en => {
             if (!en.isIntersecting) return;
-            en.target.classList.add('in-view');   // секция: поднимает знак искры + watermark
-            en.target.classList.add('in');        // reveal-элемент
+            en.target.classList.add('in-view');
+            en.target.classList.add('in');
             appear.unobserve(en.target);
         });
     }, { threshold: 0.16 });
@@ -135,4 +135,46 @@
 
     toTop.addEventListener('click', () =>
         window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }));
+
+    /* ========== 6. ACCORDION: открыт только один блок в своей группе ========== */
+    /* Группа = общий контейнер (.norms, .grid-auto). Работает без data-group. */
+    document.addEventListener('toggle', function (e) {
+        const d = e.target;
+        if (!d || d.tagName !== 'DETAILS' || !d.open) return;
+        const scope = d.closest('.norms, .grid-auto');
+        if (!scope) return;
+        $$('details', scope).forEach(function (other) {
+            if (other !== d && other.open) other.open = false;
+        });
+    }, true);
+
+    /* ========== 7. МОДАЛКА «ПОДРОБНЕЕ»: общая для всех карточек ========== */
+    const modal = $('#supportModal');
+    const modalTitle = $('#supportModalTitle');
+    const modalDesc = $('#supportModalDesc');
+
+    function openSupportModal(btn) {
+        if (!modal) return;
+        modalTitle.textContent = btn.getAttribute('data-name') || '';
+        modalDesc.textContent = btn.getAttribute('data-desc') || '';
+        modal.hidden = false;
+        requestAnimationFrame(() => modal.classList.add('open'));
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSupportModal() {
+        if (!modal || modal.hidden) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { modal.hidden = true; }, 250);
+    }
+
+    $$('.support-card .more').forEach(btn =>
+        btn.addEventListener('click', () => openSupportModal(btn)));
+
+    if (modal) {
+        modal.addEventListener('click', e => { if (e.target === modal) closeSupportModal(); });
+        const closeBtn = $('.support-close', modal);
+        if (closeBtn) closeBtn.addEventListener('click', closeSupportModal);
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSupportModal(); });
 })();
