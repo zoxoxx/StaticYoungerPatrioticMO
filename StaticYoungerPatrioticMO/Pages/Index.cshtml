@@ -8,47 +8,21 @@
     <canvas id="sparks" class="hero-canvas" aria-hidden="true"></canvas>
     <div class="container hero-inner">
         <div class="hero-emblem" aria-hidden="true">
-            <svg viewBox="0 0 240 260"><use href="#spark-emblem" /></svg>
+            <img src="~/images/emblem.svg" alt="" />
         </div>
         <h1 class="hero-title">ИСКРА</h1>
         <div class="hero-divider" aria-hidden="true">
             <span></span><svg viewBox="0 0 24 24"><use href="#icon-spark" /></svg><span></span>
         </div>
         <p class="hero-sub">Программа нравственного, патриотического и&nbsp;духовного воспитания современной молодёжи</p>
-        <div class="hero-actions">
-            <a class="btn btn-ghost" href="#about">О программе</a>
-        </div>
-        <div class="hero-badges">
-            <span class="badge">От @Model.Info.AgeMin до @Model.Info.AgeMax лет</span>
-            <span class="badge">@Model.Ranks.Count рангов роста</span>
-            <span class="badge">Участие бесплатное</span>
-        </div>
     </div>
     <a class="scroll-hint" href="#stats" aria-label="Прокрутить вниз"><span></span></a>
-</section>
-
-<section class="stats" id="stats" data-animate>
-    <div class="container stats-grid">
-        <div class="stat reveal">
-            <p class="stat-num">@Model.Info.AgeMin–@Model.Info.AgeMax</p>
-            <p class="stat-label">возраст участников программы</p>
-        </div>
-        <div class="stat reveal" style="@Model.StatsDelay1">
-            <p class="stat-num"><span data-count="@Model.Ranks.Count">0</span></p>
-            <p class="stat-label">рангов в системе «искровцев»</p>
-        </div>
-        <div class="stat reveal" style="@Model.StatsDelay2">
-            <p class="stat-num">Бесплатно</p>
-            <p class="stat-label">стоимость участия</p>
-        </div>
-    </div>
 </section>
 
 <section class="section" id="about" data-animate>
     <svg class="watermark" aria-hidden="true"><use href="#spark-emblem" /></svg>
     <div class="container">
         <header class="section-head">
-            <svg class="section-spark" aria-hidden="true"><use href="#spark-emblem" /></svg>
             <div>
                 <h2 class="section-title">О программе</h2>
             </div>

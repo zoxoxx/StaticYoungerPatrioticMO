@@ -298,7 +298,7 @@ namespace StaticYoungerPatrioticMO.Pages
         // Попечительский совет (карточки 2–4 — ЗАГЛУШКИ)
         public IReadOnlyList<TrusteeRecord> Trustees { get; } = new[]
         {
-            new TrusteeRecord("Отнерубов Сергей Михайлович",
+            new TrusteeRecord("Огнерубов Сергей Михайлович",
                 "Автор программы «ИСКРА», командир Народной Дружины «Калининская»",
                 "~/images/photos/photo-1.svg",
                 "Подробная информация будет предоставлена позже. (ЗАГЛУШКА)"),

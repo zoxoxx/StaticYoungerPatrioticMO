@@ -2016,3 +2016,75 @@ body.menu-open .nav-burger span:nth-child(3) {
 .support-expand {
     display: none !important
 }
+
+.norm-card {
+    word-break: normal;
+    overflow-wrap: break-word
+}
+
+.norm-body {
+    word-break: normal;
+    overflow-wrap: break-word
+}
+
+.norm-table td {
+    word-break: normal;
+    overflow-wrap: break-word;
+    vertical-align: top
+}
+
+    .norm-table td:first-child {
+        width: 60%
+    }
+
+    .norm-table td:last-child {
+        white-space: normal;
+        width: 40%
+    }
+
+/* ============ ¬≈–—»я 11:  –”ѕЌјя ЁћЅЋ≈ћј ¬ Ўјѕ ≈ » HERO ============ */
+
+/* Ўапка стала чуть выше, чтобы логотип не упиралс€ в кра€ */
+.nav-inner {
+    height: 84px
+}
+
+.nav-logo-emblem {
+    width: auto;
+    height: 66px;
+    object-fit: contain
+}
+
+@media (max-width:768px) {
+    .nav-menu {
+        inset: 84px 0 auto 0
+    }
+}
+
+html {
+    scroll-padding-top: 104px
+}
+
+/* Ёмблема в hero Ч крупна€ */
+.hero-emblem {
+    width: clamp(280px,36vw,440px);
+    height: auto;
+    margin: 0 auto 10px
+}
+
+    .hero-emblem img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        filter: drop-shadow(0 14px 40px rgba(247,201,72,.35))
+    }
+
+/* ============ ¬≈–—»я 12: ћ≈Ќё Ѕ≈« Ћќ√ќ“»ѕј ============ */
+.nav-menu {
+    margin-left: auto; /* прижимает меню к правому краю, как было при логотипе */
+}
+
+.nav-burger {
+    margin-left: auto; /* бургер справа на мобильных */
+}
