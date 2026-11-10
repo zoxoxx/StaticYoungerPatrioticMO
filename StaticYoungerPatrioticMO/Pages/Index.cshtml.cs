@@ -240,24 +240,24 @@ namespace StaticYoungerPatrioticMO.Pages
         };
 
         public IReadOnlyList<Supporter> Supporters { get; } = new[]
-        {
-            new Supporter("Правительство Санкт-Петербурга"),
-            new Supporter("Администрация Калининского района"),
-            new Supporter("Законодательное Собрание Санкт-Петербурга"),
-            new Supporter("УТ МВД РФ по СЗФО"),
-            new Supporter("ОАО РЖД"),
-            new Supporter("Спецназ «Ахмат»"),
-            new Supporter("33-я отдельная ордена Жукова бригада оперативного назначения")
+{
+            new Supporter("Правительство Санкт-Петербурга", "~/images/01_pravitelstvo_spb.svg"),
+            new Supporter("Администрация Калининского района", "~/images/02_kalininsky_raion.svg"),
+            new Supporter("Законодательное Собрание Санкт-Петербурга", "~/images/03_zaksobranie.svg"),
+            new Supporter("УТ МВД РФ по СЗФО", "~/images/04_ut_mvd_szfo.svg"),
+            new Supporter("ОАО РЖД", "~/images/05_rzhd.svg"),
+            new Supporter("Спецназ «Ахмат»", "~/images/06_ahmat.svg"),
+            new Supporter("33-я отдельная ордена Жукова бригада оперативного назначения", "~/images/07_33_brigada.svg")
         };
 
         public IReadOnlyList<Partner> Partners { get; } = new[]
         {
-            new Partner("ФК «Зенит»"),
-            new Partner("Концерн «Калашников»"),
-            new Partner("ПМЦ Калининского района С-Пб"),
-            new Partner("ЦФКиС Калининского района С-Пб"),
-            new Partner("Благотворительный фонд «Сиверский»"),
-            new Partner("«Своя Мастерская»")
+            new Partner("ФК «Зенит»", "~/images/08_zenit.svg"),
+            new Partner("Концерн «Калашников»", "~/images/09_kalashnikov.svg"),
+            new Partner("ПМЦ Калининского района С-Пб", "~/images/10_pmc_kalininsky.svg"),
+            new Partner("ЦФКиС Калининского района С-Пб"), // логотипа нет — покажем иконку-звезду
+            new Partner("Благотворительный фонд «Сиверский»", "~/images/11_bf_siversky.svg"),
+            new Partner("«Своя Мастерская»", "~/images/12_svo_masterskaya.svg")
         };
 
         // ЗАГЛУШКА: описание партнёров дадут позже

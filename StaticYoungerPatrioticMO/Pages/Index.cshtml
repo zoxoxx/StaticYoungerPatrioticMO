@@ -254,9 +254,16 @@
             {
                 <article class="card support-card reveal">
                     <div class="support-head">
-                        <svg class="support-icon" aria-hidden="true"><use href="#icon-shield" /></svg>
+                        @if (!string.IsNullOrEmpty(s.Logo))
+                        {
+                            <img class="support-logo" src="@Url.Content(s.Logo)" alt="" loading="lazy" />
+                        }
+                        else
+                        {
+                            <svg class="support-icon" aria-hidden="true"><use href="#icon-shield" /></svg>
+                        }
                         <span class="name">@s.Name</span>
-                        <button type="button" class="more" data-name="@s.Name" data-desc="@Model.PartnerDescription">Подробнее</button>
+                        <button type="button" class="more" data-name="@s.Name" data-desc="@Model.PartnerDescription" data-logo="@Url.Content(s.Logo)">Подробнее</button>
                     </div>
                 </article>
             }
@@ -268,9 +275,16 @@
             {
                 <article class="card support-card reveal">
                     <div class="support-head">
-                        <svg class="support-icon" aria-hidden="true"><use href="#icon-star" /></svg>
+                        @if (!string.IsNullOrEmpty(p.Logo))
+                        {
+                            <img class="support-logo" src="@Url.Content(p.Logo)" alt="" loading="lazy" />
+                        }
+                        else
+                        {
+                            <svg class="support-icon" aria-hidden="true"><use href="#icon-star" /></svg>
+                        }
                         <span class="name">@p.Name</span>
-                        <button type="button" class="more" data-name="@p.Name" data-desc="@Model.PartnerDescription">Подробнее</button>
+                        <button type="button" class="more" data-name="@p.Name" data-desc="@Model.PartnerDescription" data-logo="@Url.Content(p.Logo)">Подробнее</button>
                     </div>
                 </article>
             }
@@ -367,6 +381,7 @@
 <div class="support-modal-backdrop" id="supportModal" hidden>
     <div class="support-modal">
         <button type="button" class="support-close" aria-label="Закрыть">×</button>
+        <img class="modal-logo" id="supportModalLogo" alt="" hidden />
         <h4 class="modal-title" id="supportModalTitle"></h4>
         <div class="photos-mini">
             @foreach (var src in Model.PartnerPhotos)

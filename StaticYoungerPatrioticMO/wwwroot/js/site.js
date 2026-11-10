@@ -152,11 +152,17 @@
     const modal = $('#supportModal');
     const modalTitle = $('#supportModalTitle');
     const modalDesc = $('#supportModalDesc');
+    const modalLogo = $('#supportModalLogo');
 
     function openSupportModal(btn) {
         if (!modal) return;
         modalTitle.textContent = btn.getAttribute('data-name') || '';
         modalDesc.textContent = btn.getAttribute('data-desc') || '';
+        const logo = btn.getAttribute('data-logo') || '';
+        if (modalLogo) {
+            if (logo) { modalLogo.src = logo; modalLogo.hidden = false; }
+            else { modalLogo.hidden = true; modalLogo.removeAttribute('src'); }
+        }
         modal.hidden = false;
         requestAnimationFrame(() => modal.classList.add('open'));
         document.body.style.overflow = 'hidden';
@@ -168,8 +174,7 @@
         setTimeout(() => { modal.hidden = true; }, 250);
     }
 
-    $$('.support-card .more').forEach(btn =>
-        btn.addEventListener('click', () => openSupportModal(btn)));
+    $$('.support-card .more').forEach(btn => btn.addEventListener('click', () => openSupportModal(btn)));
 
     if (modal) {
         modal.addEventListener('click', e => { if (e.target === modal) closeSupportModal(); });

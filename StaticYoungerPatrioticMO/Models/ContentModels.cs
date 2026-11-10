@@ -1,7 +1,7 @@
 ﻿namespace StaticYoungerPatrioticMO.Models;
 
-public sealed record Supporter(string Name);
-public sealed record Partner(string Name);
+public sealed record Supporter(string Name, string Logo = "");
+public sealed record Partner(string Name, string Logo = "");
 public sealed record ContactPoint(string Title, string Address, string Note);
 public sealed record NormRow(string Exercise, string Value);
 

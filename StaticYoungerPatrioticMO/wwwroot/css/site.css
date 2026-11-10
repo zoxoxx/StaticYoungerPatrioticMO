@@ -2088,3 +2088,39 @@ html {
 .nav-burger {
     margin-left: auto; /* áóğãåğ ñïğàâà íà ìîáèëüíûõ */
 }
+
+/* ============ ÂÅĞÑÈß 13: ËÎÃÎÒÈÏÛ ÏÎÄÄÅĞÆÈÂÀŞÙÈÕ È ÏÀĞÒÍ¨ĞÎÂ ============ */
+.support-head .support-logo {
+    grid-column: 1;
+    grid-row: 1;
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 6px 16px rgba(12,35,66,.12);
+}
+
+.modal-logo {
+    display: block;
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 14px;
+    padding: 8px;
+    margin: 0 auto 12px;
+    box-shadow: 0 10px 26px rgba(12,35,66,.18);
+}
+
+    .modal-logo[hidden] {
+        display: none
+    }
+
+@media (max-width:768px) {
+    .support-head .support-logo {
+        width: 46px;
+        height: 46px
+    }
+}
